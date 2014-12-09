@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  \usepackage[vmargin=1in,hmargin=1in]{geometry}
+</head>
+<body>
+<h1 id="writing-scientific-papers-using-markdown">Writing Scientific Papers Using Markdown</h1>
+<p>Markdown is a markup language that is very handy and easy to use. I won't say much more about it, but I've written about it before <a href="http://danieljhocking.wordpress.com/2013/09/25/knitting-beautiful-documents-in-rstudio/">here</a> and <a href="http://danieljhocking.wordpress.com/2014/04/07/electronic-lab-notebook-take-1/">here</a>. I've used it increasingly for writing blog posts, webpages, taking notes, with GitHub issue tracking, and with R code (R Markdown in RStudio is fantastic!). As a Mac OS user, I find Microsoft Office products to be annoying and temperamental. I read Karthik Ram's great post on how to <a href="http://inundata.org/2012/12/04/how-to-ditch-word/">ditch MS Word</a> a while back and since I've been using Markdown for so much lately, it seemed like a good time to write my first scientific paper with it. I'm going to use this post, written in Markdown, to outline my process. This will help me repeat the process in the future if I like it and hopefully help others interested in trying it.</p>
+<h3 id="step-1-create-a-markdown-document">Step 1: Create a Markdown Document</h3>
+<p>Obviously the first step is to create a Markdown document. You can do this with any text editor and just change the extension from <code>.txt</code> to <code>.md</code>. However, there are applications with handy Markdown features. I use <a href="http://25.io/mou/">Mou</a> because it has a nice live-rendering of your markdown code so you can see what it looks like.</p>
+<p>For this example and for future use, I've created a template for a manuscript that you can find here.</p>
+<h3 id="step-2-add-in-text-citations">Step 2: Add In-Text Citations</h3>
+<p>To add references, I use Mendeley and create a folder for any publications I cite (or might cite) in the manuscript. Then while writing you can add in-text citations with <code>[@Hocking2013]</code>, which can be found under Citation Key in Mendeley. Then I export this folder as a BibTeX file to the folder that the manuscript will live in. This will be used later to render the literature cited section.</p>
+<h3 id="step-3-install-or-update-pandoc">Step 3: Install or Update Pandoc</h3>
+<p>Pandoc is an amazing program to convert between different file types. In our case we can create HTML, Word, and PDF files from our Markdown document. You can find the installation instructions at <a href="http://johnmacfarlane.net/pandoc/installing.html" class="uri">http://johnmacfarlane.net/pandoc/installing.html</a>. You will also need LaTeX installed if you want to output PDF documents. You can use <a href="https://tug.org/mactex/">MacTex</a> or <a href="http://www.tug.org/mactex/morepackages.html">BasicTeX</a> on a Mac or <a href="http://miktex.org/">MiKTeX</a> on a Windows machine (Linux users, you know what to do).</p>
+<p>I was getting an error</p>
+<pre><code>Error running filter pandoc-citeproc
+Error 83</code></pre>
+<p>So I decided to install <a href="https://www.haskell.org/platform/">Haskell</a> and run the following:</p>
+<pre><code>cabal update
+cabal install pandoc pandoc-citeproc</code></pre>
+<p>Then this can just be run again in the Terminal app in the future to update pandoc.</p>
+<h3 id="step-4-add-a-style-sheet">Step 4: Add a Style Sheet</h3>
+<p>When creating a PDF there is a 1.5 inch left margin by default (good for binding I guess). Generally, I want 1 inch margins all around so I open a text file and paste</p>
+<pre><code>\usepackage[vmargin=1in,hmargin=1in]{geometry}</code></pre>
+<p>Then save it as <code>format.sty</code> in the folder with the manuscript. If you want line numbers and other formatting you can add these lines</p>
+<pre><code>\usepackage{lineno}
+\linenumbers
+\usepackage{times}</code></pre>
+<h3 id="step-5-add-a-journal-style-file">Step 5: Add a Journal Style File</h3>
+<p>One of the benefits of writing in simple text is that you don't have to worry about formatting while writing. But now to add formatting for a specific journal, go <a href="https://github.com/citation-style-language/styles">here</a> to get a style <code>.csl</code> file that is an XML type document that defines the styles required for a journal. This includes in-text citation, literature cited, and heading styles. Copy the desired <code>.csl</code> file into the same folder as manuscript <code>.md</code> document.</p>
+<h3 id="step-6-put-it-all-together">Step 6: Put it all Together</h3>
+<p>Now is when we use pandoc to combine the styles and bibliographic information with the manuscript. In the Terminal you can simply run</p>
+<pre><code>pandoc document.md -o document.pdf</code></pre>
+<p>to convert the document from markdown to PDF. However, this won't have any of the desired formatting. To include the formatting, you just add some flags and arguments as such:</p>
+<pre><code>pandoc document.md -o document.pdf --bibliography cite.bib --csl style.csl -H format.sty</code></pre>
+<p>To automate this code and potentially output PDF, Word, and HTML documents all at once you can easily create a <code>make</code> file. To do this open a text editor and paste something like:</p>
+<pre><code>all: document_ms.pdf document_ms.doc
+
+document_ms.doc: document_ms.md document_refs.bib
+    pandoc -H format.sty -V fontsize=12pt --bibliography document_refs.bib --csl=ecology.csl document_ms.md -o document_ms.doc
+
+document_ms.pdf: document_ms.md document_refs.bib
+    pandoc -H format.sty -V fontsize=12pt --bibliography document_refs.bib --csl=ecology.csl document_ms.md -o document_ms.pdf</code></pre>
+<p>Then save the file as <code>makefile</code> with no extension (i.e. <code>.txt</code>). Then when you <code>cd</code> to that folder in Terminal you just have to type <code>make</code> and the documents will automatically be created. At this point you should have <code>.md</code>, <code>.doc</code>, and <code>.pdf</code> files (and <code>.html</code> if you want).</p>
+<p>If you change anything in the markdown file or want to format for a different journal just add the new <code>.csl</code> file and make any other changes you want then run <code>make</code> again. Then submit the manuscript.</p>
+<p>I am currently using <code>diff</code> in git or GitHub to replace track changes with co-authors early in the process when there are lots of changes but authors can also comment on Word or PDF versions as well. I'm also interested in potentially checking out <a href="https://www.authorea.com/">Authorea</a> for collaborative writing in Markdown. It seems pretty slick.</p>
+<div class="references">
+
+</div>
+</body>
+</html>

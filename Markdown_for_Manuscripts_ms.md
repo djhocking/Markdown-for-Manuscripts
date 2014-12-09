@@ -3,7 +3,7 @@ Catchy Title that Reviewers will Love
 
 ### Daniel J. Hocking and Names of Awesome Coauthors
 
-*Daniel J. Hocking ([dhocking@usgs.gov](mailto:dhocking@usgs.gov)), US Geological Survey, Conte Anadromous Fish Research Center, Turners Falls, MA, USA
+*Daniel J. Hocking ([dhocking@usgs.gov](mailto:dhocking@usgs.gov)), US Geological Survey, Conte Anadromous Fish Research Center, Turners Falls, MA, USA*
 
 Abstract
 --------
