@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  \usepackage[vmargin=1in,hmargin=1in]{geometry}
+</head>
+<body>
+<h1 id="catchy-title-that-reviewers-will-love">Catchy Title that Reviewers will Love</h1>
+<h3 id="daniel-j.-hocking-and-names-of-awesome-coauthors">Daniel J. Hocking and Names of Awesome Coauthors</h3>
+<p>*Daniel J. Hocking (<script type="text/javascript">
+<!--
+h='&#x75;&#x73;&#x67;&#x73;&#46;&#x67;&#x6f;&#118;';a='&#64;';n='&#100;&#104;&#x6f;&#x63;&#x6b;&#x69;&#110;&#x67;';e=n+a+h;
+document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail">'+e+'<\/'+'a'+'>');
+// -->
+</script><noscript>&#100;&#104;&#x6f;&#x63;&#x6b;&#x69;&#110;&#x67;&#32;&#x61;&#116;&#32;&#x75;&#x73;&#x67;&#x73;&#32;&#100;&#x6f;&#116;&#32;&#x67;&#x6f;&#118;</noscript>), US Geological Survey, Conte Anadromous Fish Research Center, Turners Falls, MA, USA</p>
+<h2 id="abstract">Abstract</h2>
+<p>Set up the problem. Explain how you solve it. Tell what you find. Explain why it's the best thing ever.</p>
+<h2 id="introduction">Introduction</h2>
+<p>Background and problem setup <span class="citation">(Hocking and Babbitt 2014a, 2014b)</span></p>
+<p>Relevant literature <span class="citation">(Hocking 2013, Hocking et al. 2013)</span></p>
+<p>Objectives/hypotheses</p>
+<h2 id="methods">Methods</h2>
+<p>Describe what you did so it can actually be repeated. I don't want to see everything in the supplementary materials. Here's an example of using LaTeX to add equations:</p>
+<p><br /><span class="math">$$
+T_s = \mu + \frac{\alpha - \mu}{1 + e^{\gamma(\beta - T_a)}}
+$$</span><br /></p>
+<h2 id="results">Results</h2>
+<p>Explain what you found. Avoid blind <em>P-values</em> (or avoid <em>P-values</em> altogether)</p>
+<h2 id="discussion">Discussion</h2>
+<p>Give context to what you found. Relate it to previous work. Describe why it's the most important scientific finding of the decade, yet avoid hyperbole. Easy, right?</p>
+<h2 id="acknowledgements">Acknowledgements</h2>
+<p>Thanks to Ethan White, Karthik Ram, Carl Boettiger, Ben Morris, and <a href="http://software-carpentry.org/">Software Carpentry</a> for getting me started with the skills needed to <a href="http://inundata.org/2012/12/04/how-to-ditch-word/">ditch MS Word</a> and produce more reproducible research.</p>
+<h2 id="tables">Tables</h2>
+<p>Table 1: Example Markdown table</p>
+<table>
+<colgroup>
+<col width="20%" />
+<col width="11%" />
+<col width="8%" />
+<col width="13%" />
+<col width="12%" />
+<col width="18%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Name</th>
+<th align="left">col2</th>
+<th align="left">col3</th>
+<th align="left">col4</th>
+<th align="left">col5</th>
+<th align="left">Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><p>Brook Trout</p></td>
+<td align="left"><p>1</p></td>
+<td align="left"><p>big</p></td>
+<td align="left"><p>few</p></td>
+<td align="left"><p>2.2</p></td>
+<td align="left"><p>Ecology &amp; life history data associated with trout</p></td>
+</tr>
+<tr class="even">
+<td align="left"><p><em>Desmognathus</em> <em>fuscus</em></p></td>
+<td align="left"><p>100</p></td>
+<td align="left"><p>small</p></td>
+<td align="left"><p>many</p></td>
+<td align="left"><p>0.3</p></td>
+<td align="left"><p>Widespread salamander species</p></td>
+</tr>
+</tbody>
+</table>
+<h2 id="figures">Figures</h2>
+<p>Figure 1. Example of adding a figure.</p>
+<div class="figure">
+<img src="Figures/MADEP_W2033_T1.png" alt="Figure1" /><p class="caption">Figure1</p>
+</div>
+<div class="references">
+<h2>Literature Cited</h2>
+<p>Hocking, D. J. 2013. Comparing the influence of ecology journals using citation-based indices: making sense of a multitude of metrics. Ideas in Ecology and Evolution 6:55–65.</p>
+<p>Hocking, D. J., and K. J. Babbitt. 2014a. Amphibian contributions to ecosystem services. Herpetological Conservation and Biology 9:1–17.</p>
+<p>Hocking, D. J., and K. J. Babbitt. 2014b. Effects of red-backed salamanders on ecosystem functions. PloS one 9:e86854.</p>
+<p>Hocking, D. J., K. J. Babbitt, and M. Yamasaki. 2013. Comparison of silvicultural and natural disturbance effects on terrestrial salamanders in northern hardwood forests. Biological Conservation 167:194–202.</p>
+</div>
+</body>
+</html>
